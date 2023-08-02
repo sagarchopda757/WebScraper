@@ -52,16 +52,16 @@ The extracted data will be presented in a structured format and sent to the spec
 Here's an example of the extracted data in JSON format:
 
 ```json
-{
+[{
 "title": "Product Title",
 "rating": "4.3 out of 5 stars",
 "price": "₹249",
 "image": "https://m.media-amazon.com/images/I/61o0Po9zWoL._AC_UL320_.jpg",
 "bestSeller": null,
 "deal": null
-}
+}]
 ```
 ### Demo
 
 Here are some sample images from the scraped Amazon product page:
-![Scraped Data](./public/mages/page_1.png)
+![Scraped Data](./public/images/page_1.png)
