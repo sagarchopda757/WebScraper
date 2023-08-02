@@ -21,11 +21,11 @@ const run = async () => {
     const email = await getEmail();
     console.log('email outside readline', email);
     const browser = await puppeteer.launch({
-        headless: true,
+        headless: false,
         defaultViewport: false,
         userDataDir: './tmp',
         // slowMo:500 ,
-        devtools: true
+        //devtools: true
     });
 
     const page = await browser.newPage();
@@ -43,13 +43,12 @@ const run = async () => {
     const payload = []
     while (nextPageUrl && counter < 3) {
         console.log('Scraping url :', nextPageUrl)
-        await page.screenshot({ path: `./public/images/page_${pageNumber}.png`, fullPage: true })
         await page.goto(nextPageUrl, { waitUntil: "load" });
+        await page.screenshot({ path: `./public/images/page_${pageNumber}.png`, fullPage: true })
         const products = await page.evaluate(() => {
             const productElements = document.querySelectorAll('.s-result-item');
             const products = [];
             for (const productElement of productElements) {
-                //    debugger;
                 const titleElement = productElement.querySelector('h2 a span.a-size-base-plus.a-color-base.a-text-normal');
                 const ratingElement = productElement.querySelector('a i span.a-icon-alt')
                 const priceElement = productElement.querySelector('a span.a-price span.a-offscreen')
@@ -58,7 +57,6 @@ const run = async () => {
                 const bestSellerElem = productElement.querySelector('div.a-row.a-badge-region span.a-badge span.a-badge-supplementary-text.a-text-ellipsis')
                 const dealElement = productElement.querySelector('div.s-price-instructions-style  span.a-badge-text')
 
-                // debugger;
 
 
                 if (titleElement || ratingElement) {
@@ -140,8 +138,7 @@ const run = async () => {
         console.log('Files uploaded successfully');
         return getstatus
     }
-    console.log('reached to mail');
-    const mail = await sendmail('sagarchopda18@gmail.com')
+    const mail = await sendmail(email)
     if (mail) {
         console.log("Mail Sent Successfully");
     }
