@@ -60,7 +60,7 @@ Here's an example of the extracted data in JSON format:
 "bestSeller": null,
 "deal": null
 }
-
+```
 ### Demo
 
 Here are some sample images from the scraped Amazon product page:
