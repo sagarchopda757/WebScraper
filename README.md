@@ -64,4 +64,4 @@ Here's an example of the extracted data in JSON format:
 ### Demo
 
 Here are some sample images from the scraped Amazon product page:
-![Scraped Data](/public/images/page_1.png)
+![Scraped Data](./public/images/page_1.png)
